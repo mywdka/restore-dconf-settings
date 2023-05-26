@@ -15,7 +15,7 @@ RUNAS=$(who am i | awk '{print $1}')
 CURRENT_DIR=$(pwd)
 SERVICE_NAME="restore-dconf-settings"
 DESCRIPTION="Restore dconf settings on boot"
-IS_ACTIVE=$(systemctl --user -M hadmin@ is-active $SERVICE_NAME)
+IS_ACTIVE=$(systemctl --user -M ${RUNAS}@ is-active $SERVICE_NAME)
 
 if [ "$IS_ACTIVE" == "active" ]; then
     echo "Service is running"
